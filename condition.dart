@@ -9,16 +9,19 @@ void main() {
   print("Entrer votre age: ");
   String? ageDonne = stdin.readLineSync();
 
-  //convertir la saise de l'age en intier
-  int age = int.parse(ageDonne!);
+  if (ageDonne != null) {
+    //convertir la saise de l'age en intier
+    int? age = int.tryParse(ageDonne);
 
-  //verification de l'age
-
-  if (age < 18) {
-    print(" $nom Vous avez $age ans et vous êtes mineur 😏");
-  }
-  else{
-    print(" $nom Vous avez $age ans et vous êtes majeur 🤗 bienvenu");
-
+    //verification de l'age
+    if (age != null) {
+      if (age < 18) {
+        print(" $nom Vous avez $age ans et vous êtes mineur 😏");
+      } else {
+        print(" $nom Vous avez $age ans et vous êtes majeur 🤗 bienvenu");
+      }
+    } else {
+      print("erreur de saisi😣 Enter un age valid");
+    }
   }
 }
